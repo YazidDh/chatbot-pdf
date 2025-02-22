@@ -27,7 +27,7 @@ Ensure you have the following dependencies installed:
 
 ##  Installation 
 Install the required dependencies using pip:  
-`pip install langchain pypdf docarray`
+`pip install langchain langchain-ollama pypdf docarray`
 
 
 ## Script Breakdown
