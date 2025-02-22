@@ -27,7 +27,11 @@ Ensure you have the following dependencies installed:
 
 ##  Installation 
 Install the required dependencies using pip:  
-`pip install langchain pypdf docarray`
+`pip install langchain langchain-ollama pypdf docarray`
+
+Install ollama and download llama3.2:1b :  
+ollama : [Download Ollama](https://ollama.com/download) 📥  
+download llama3.2:1b using this command: `ollama pull llama3.2:1b`
 
 
 ## Script Breakdown
