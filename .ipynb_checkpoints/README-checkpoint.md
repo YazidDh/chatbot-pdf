@@ -36,7 +36,7 @@ Ensure you have the following dependencies installed:
 - [`langchain-ollama`](https://pypi.org/project/langchain-ollama/)
 - `docarray`
 - `pypdf`
-- Ollama installed and configured locally
+- Ollama installed and configured locally ([Download Ollama](https://ollama.com/download))
 
 ---
 
