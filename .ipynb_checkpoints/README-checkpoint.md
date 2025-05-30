@@ -1,42 +1,50 @@
-# chatbot-pdf
- A chatbot that enables seamless interaction with your PDFs
+# 📚 Multilingual PDF Chatbot
 
-## Retrieval-Augmented Generation (RAG)
+A conversational chatbot that allows users to interact intelligently with PDF documents using local large language models and retrieval-augmented generation (RAG).
 
-Retrieval-Augmented Generation (RAG) boosts an LLM’s capabilities by retrieving relevant documents from an external dataset during execution.
+---
 
-This approach is particularly useful for answering questions based on specific documents, such as PDFs, videos, or other structured data sources.
+## 🔍 Retrieval-Augmented Generation (RAG)
 
+Retrieval-Augmented Generation enhances an LLM's responses by retrieving relevant document chunks from a custom dataset at runtime.
 
-![Alt text](./images/ragchatbotpdf.png)
+This architecture is especially useful for question answering on personalized or private data such as PDFs.
 
+![Chatbot Architecture](./images/ragchatbotpdf.png)
 
-## Overview
-This code loads a pdf into text, split the text into chunks, embeds the text using `OllamaEmbeddings`, and saves them in a vectorDatabase. Then the chatbot retrieves the most relevent chunks and answers the user questions.
+---
 
+## 🧠 Overview
 
-## Requirements
+This chatbot works as follows:
+
+1. Loads and reads a PDF using `PyPDFLoader`.
+2. Splits the content into smaller chunks using `RecursiveCharacterTextSplitter`.
+3. Generates embeddings locally with `OllamaEmbeddings`.
+4. Stores and retrieves embeddings using `DocArrayInMemorySearch`.
+5. Uses `ConversationalRetrievalChain` to generate accurate answers with context, powered by a local LLM (`OllamaLLM`).
+6. Responds in a conversational format with memory and source tracking.
+
+---
+
+## ⚙️ Requirements
+
 Ensure you have the following dependencies installed:
 
-+ Python 3.x
-+ PyPDFLoader for loading PDFs
-+ RecursiveCharacterTextSplitter for splitting text into manageable chunks
-+ OllamaEmbeddings for creating embeddings
-+ DocArrayInMemorySearch for in-memory vector search
-+ ConversationalRetrievalChain from LangChain for conversational querying
+- Python 3.x
+- [`langchain`](https://python.langchain.com/)
+- [`langchain-ollama`](https://pypi.org/project/langchain-ollama/)
+- `docarray`
+- `pypdf`
+- Ollama installed and configured locally
 
-##  Installation 
-Install the required dependencies using pip:  
-`pip install langchain langchain-ollama pypdf docarray`
+---
 
-Install ollama and download llama3.2:1b :  
-ollama : [Download Ollama](https://ollama.com/download) 📥  
-download llama3.2:1b using this command: `ollama pull llama3.2:1b`
+## 💾 Installation
 
+Install required dependencies:
 
-## Script Breakdown
-+ Loading the PDF: Uses `PyPDFLoader` to extract text.
-+ Text Splitting: Splits text into 1000-character chunks with 150-character overlap using `RecursiveCharacterTextSplitter`.
-+ Embedding & Vector Search: Uses `OllamaEmbeddings` to generate embeddings and `DocArrayInMemorySearch` for similarity-based retrieval.
-+ Conversational Chain: Utilizes `ConversationalRetrievalChain` with an `OllamaLLM` model to generate responses.
-+ Chat Interaction: Stores chat history and responds to user queries based on retrieved documents.
+```bash
+pip install langchain langchain-ollama pypdf docarray
+ollama pull nomic-embed-text:latest
+ollama pull qwen2.5:1.5b
